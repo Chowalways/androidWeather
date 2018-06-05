@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eaaf02"
+    tools:context=".MainActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/cityText"
+        android:textColor="#FFFF"
+        android:text="Hello"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/thumbnailIcon"
+        android:layout_below="@id/cityText"
+        android:layout_marginTop="10dp"
+        android:background="#eaaf02"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <com.github.pavlospt.CircleView
+        android:id="@+id/temperatureText"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cityText"
+        app:cv_subtitleText=""
+        app:cv_fillColor="#eaaf02"
+        app:cv_strokeColorValue="#df9502"
+        app:cv_backgroundColorValue="#df9502"
+        app:cv_titleColor="#ffffff"
+        app:cv_titleSize="45dp"
+        app:cv_titleText="temperature"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/windText"
+        android:textColor="#729101"
+        android:textSize="20dp"
+        android:text="wind"
+        android:layout_below="@+id/thumbnailIcon"
+        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/cloudText"
+        android:textColor="#729101"
+        android:textSize="20dp"
+        android:text="cloud"
+        android:layout_below="@+id/windText"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/pressureText"
+        android:textColor="#729101"
+        android:textSize="20dp"
+        android:text="pressure"
+        android:layout_below="@+id/cloudText"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/humidityText"
+        android:textColor="#729101"
+        android:textSize="20dp"
+        android:text="Humidity"
+        android:layout_below="@+id/pressureText"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/riseText"
+        android:textColor="#729101"
+        android:textSize="20dp"
+        android:text="Sunrise"
+        android:layout_below="@+id/humidityText"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/sunsetText"
+        android:textColor="#729101"
+        android:textSize="20dp"
+        android:text="Sunset"
+        android:layout_below="@+id/riseText"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/updateText"
+        android:textColor="#38455B"
+        android:textSize="15dp"
+        android:text="last updated"
+        android:layout_below="@+id/sunsetText"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

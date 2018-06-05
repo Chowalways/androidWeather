@@ -1,0 +1,212 @@
+package com.example.chow.weatherv2;
+
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.github.pavlospt.CircleView;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import Util.Utils;
+import data.CityPreference;
+import data.JSONWeatherParser;
+import data.WeatherHttpClient;
+import model.Weather;
+
+public class MainActivity extends AppCompatActivity {
+    private TextView cityName;
+    private CircleView temp;
+    private ImageView iconView;
+    private TextView description;
+    private TextView humidity;
+    private  TextView pressure;
+    private TextView wind;
+    private TextView sunrise;
+    private TextView sunset;
+    private TextView updated;
+
+    Weather weather = new Weather();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        cityName = (TextView)findViewById(R.id.cityText);
+        iconView = (ImageView)findViewById(R.id.thumbnailIcon);
+        temp = (CircleView) findViewById(R.id.temperatureText);
+        description = (TextView)findViewById(R.id.cloudText);
+        humidity = (TextView)findViewById(R.id.humidityText);
+        pressure = (TextView)findViewById(R.id.pressureText);
+        wind = (TextView)findViewById(R.id.windText);
+        sunrise = (TextView) findViewById(R.id.riseText);
+        sunset = (TextView)findViewById(R.id.sunsetText);
+        updated = (TextView)findViewById(R.id.updateText);
+
+
+        CityPreference cityPreference = new CityPreference(MainActivity.this);
+        renderWeatherData(cityPreference.getCity());
+    }
+
+
+
+    public void renderWeatherData (String city){
+        WeatherTask weatherTask = new WeatherTask();
+        weatherTask.execute(new String[]{city});
+    }
+
+    private class DownloadImageAsyncTask extends AsyncTask<String, Void, Bitmap>{
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            iconView.setImageBitmap(bitmap);
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            return downloadImage(params[0]);
+        }
+        private Bitmap downloadImage (String code){
+            final DefaultHttpClient client  = new DefaultHttpClient();
+            final HttpGet getRequest = new HttpGet(Utils.ICON_URL + code+ ".png");
+            try {
+                HttpResponse response = client.execute(getRequest);
+                final int statusCode = response.getStatusLine().getStatusCode();
+                if(statusCode != HttpStatus.SC_OK){
+                    Log.e("DownloadImage", "Error:" + statusCode);
+                    return null;
+                }
+                final HttpEntity entity = response.getEntity();
+                if (entity != null){
+                    InputStream inputStream = null;
+                    inputStream = entity.getContent();
+                    final Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    return bitmap;
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+
+    }
+
+    private class WeatherTask extends AsyncTask<String, Void, Weather>{
+
+        @Override
+        protected Weather doInBackground(String... params) {
+            String data = ((new WeatherHttpClient()).getWeatherData(params[0]));
+
+
+            weather = JSONWeatherParser.getWeather(data);
+            weather.iconData = weather.currentCondition.getIcon();
+
+            Log.v("Data:", weather.place.getCity() + "" + weather.currentCondition.getDescription());
+
+            new DownloadImageAsyncTask().execute(weather.iconData);
+            return weather;
+        }
+
+        @Override
+        protected void onPostExecute(Weather weather) {
+            super.onPostExecute(weather);
+
+
+            //sunrise date
+            Long lsunrise = Long.valueOf(weather.place.getSunrise())*1000;
+            Date dsunrise = new java.util.Date(lsunrise);
+            String sunriseDate = new SimpleDateFormat("hh:mm:a").format(dsunrise);
+
+            //sunset date
+            Long lsunset = Long.valueOf(weather.place.getSunset())*1000;
+            Date dsunset = new java.util.Date(lsunset);
+            String sunsetDate = new SimpleDateFormat("hh:mm:a").format(dsunset);
+
+            // last update date
+            Long lupdate = Long.valueOf(weather.place.getLastupdate())*1000;
+            Date dupdate = new java.util.Date(lupdate);
+            String updateDate = new SimpleDateFormat("hh:mm:a").format(dupdate);
+
+
+
+
+            DecimalFormat decimalFormat = new DecimalFormat("#.#");
+            String tempFormat = decimalFormat.format(weather.currentCondition.getTemperature());
+
+
+            cityName.setText(weather.place.getCity() + "," + weather.place.getCountry());
+            temp.setTitleText("" + tempFormat + "°C");
+            humidity.setText("Humidity: " + weather.currentCondition.getHumidity() + "%");
+            pressure.setText("Pressure: " + weather.currentCondition.getPressure() + "hPa");
+            wind.setText("Wind: \n" + weather.wind.getSpeed() + "mps");
+            sunrise.setText("Sunrise: " + sunriseDate);
+            sunset.setText("Sunset: " + sunsetDate);
+            updated.setText("Last Updated: " + updateDate);
+            description.setText("Condition: " + weather.currentCondition.getCondition() + "(" +
+                    weather.currentCondition.getDescription() + ")");
+
+        }
+    }
+
+    private void showInputDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Change City");
+        final EditText cityInput = new EditText(MainActivity.this);
+        cityInput.setInputType(InputType.TYPE_CLASS_TEXT);
+        cityInput.setHint("Taipei,TW");
+        builder.setView(cityInput);
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                CityPreference cityPreference = new CityPreference(MainActivity.this);
+                cityPreference.setCity(cityInput.getText().toString());
+                String newCity = cityPreference.getCity();
+                renderWeatherData(newCity);
+            }
+        });
+        builder.show();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.changeCity){
+            showInputDialog();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
