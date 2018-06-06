@@ -2,7 +2,7 @@ package com.example.chow.weatherv2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
+//uninportnt
 
 public class EarthQuakeWarnings extends AppCompatActivity {
 

@@ -1,7 +1,7 @@
 package com.example.chow.weatherv2;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
 
 public class Typhoon extends AppCompatActivity {
 
@@ -12,3 +12,4 @@ public class Typhoon extends AppCompatActivity {
 
     }
 }
+//uninportnt

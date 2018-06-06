@@ -78,7 +78,7 @@ public class WeatherClass extends AppCompatActivity {
     }
 
 
-
+//uninportnt
     public void renderWeatherData (String city){
         WeatherTask weatherTask = new WeatherTask();
         weatherTask.execute(new String[]{city});

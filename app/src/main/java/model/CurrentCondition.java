@@ -10,7 +10,7 @@ public class CurrentCondition {
     private float maxTemp;
     private float minTemp;
     private double temperature;
-
+    //uninportnt
     public int getWeatherId() {
         return weatherId;
     }

@@ -15,7 +15,7 @@ public class CityPreference {
         return pref.getString("city", "Taichung,TW");
 
     }
-
+    //uninportnt
     public void setCity(String city){
         pref.edit().putString("city", city).commit();
     }
