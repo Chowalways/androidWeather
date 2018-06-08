@@ -30,6 +30,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
@@ -48,24 +50,8 @@ public class EarthQuakeWarnings extends AppCompatActivity {
 
         private static final int LIST_quake = 1;
 
-        private Handler handler = new Handler() {
-
-            @Override
-            public void publish(LogRecord logRecord) {
-
-            }
-
-            @Override
-            public void flush() {
-
-            }
-
-            @Override
-            public void close() throws SecurityException {
-
-            }
-
-            public void sendMessage(Message msg) {
+        private android.os.Handler handler = new android.os.Handler() {
+            public void handleMessage(Message msg) {
                 switch (msg.what) {
                     case LIST_quake: {
                         List<quake> quakes = (List<quake>)msg.obj;
@@ -75,11 +61,9 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                 }
             }
         };
-
         private void refreshQuakeList(List<quake> quakes) {
             adapter.clear();
             adapter.addAll(quakes);
-
         }
 
 
@@ -88,12 +72,13 @@ public class EarthQuakeWarnings extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_earthquake);
 
+            getQuakeFromFirebase();
             ListView Quake= (ListView)findViewById(R.id.listview_earthQuake);
 
             adapter = new quakeArrayAdapter(this, new ArrayList<quake>());
             Quake.setAdapter(adapter);
 
-            getQuakeFromFirebase();
+
         }
 
         class FirebaseThread extends Thread {
@@ -126,15 +111,12 @@ public class EarthQuakeWarnings extends AppCompatActivity {
 
                     Log.v("EarthQuake", Time + ";" + locale );
 
+                    Message msg = new Message();
+                    msg.what = LIST_quake;
+                    msg.obj = lsquake;
+                    handler.sendMessage(msg);
+
                 }
-
-
-
-                Message msg = new Message();
-                msg.what = LIST_quake;
-                msg.obj = lsquake;
-                handler.sendMessage(msg);
-
             }
         }
 
