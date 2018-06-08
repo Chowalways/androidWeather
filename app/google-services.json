@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "966685970539",
+    "firebase_url": "https://earthquake-34c2c.firebaseio.com",
+    "project_id": "earthquake-34c2c",
+    "storage_bucket": "earthquake-34c2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966685970539:android:fc3559973833dc31",
+        "android_client_info": {
+          "package_name": "com.example.chow.weatherv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966685970539-bsc0m74ofm4u9hsp54hm9gv7h14998vf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chow.weatherv2",
+            "certificate_hash": "70163f13dd39874dca2a5d173d3f8b1ccd0bfbf6"
+          }
+        },
+        {
+          "client_id": "966685970539-qtgc03fumoafip66b0tkadnsa59ukih2.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "966685970539-qtgc03fumoafip66b0tkadnsa59ukih2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAiG3NDw48gYE-TzdWZugcn49HJBDlE2k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966685970539-qtgc03fumoafip66b0tkadnsa59ukih2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -37,7 +37,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.logging.LogRecord;
 
 
 //uninportnt
@@ -49,20 +49,35 @@ public class EarthQuakeWarnings extends AppCompatActivity {
         private static final int LIST_quake = 1;
 
         private Handler handler = new Handler() {
+            @Override
+            public void publish(LogRecord logRecord) {
+
+            }
+
+            @Override
+            public void flush() {
+
+            }
+
+            @Override
+            public void close() throws SecurityException {
+
+            }
+
             public void handleMessage(Message msg) {
                 switch (msg.what) {
                     case LIST_quake: {
-                        List<quake> pets = (List<quake>)msg.obj;
-                        refreshPetList(pets);
+                        List<quake> quakes = (List<quake>)msg.obj;
+                        refreshQuakeList(quakes);
                         break;
                     }
                 }
             }
         };
 
-        private void refreshPetList(List<quake> pets) {
+        private void refreshQuakeList(List<quake> quakes) {
             adapter.clear();
-            adapter.addAll(pets);
+            adapter.addAll(quakes);
 
         }
 
@@ -107,9 +122,9 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                     aQuake.setExtent(extent);
                     aQuake.setDepth(depth);
                     lsquake.add(aQuake);
-                    /*
-                                        Log.v("EarthQuake", Time + ";" + locale );
-                                         */
+
+                    Log.v("EarthQuake", Time + ";" + locale );
+
                 }
                 /*
                 Message msg = new Message();
@@ -131,7 +146,7 @@ public class EarthQuakeWarnings extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Log.v("AdoptPet", databaseError.getMessage());
+                    Log.v("earthQuake", databaseError.getMessage());
                 }
             });
         }
