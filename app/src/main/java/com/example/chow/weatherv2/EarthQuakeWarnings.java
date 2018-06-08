@@ -73,10 +73,10 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                     DataSnapshot dsExtent = ds.child("規模");
                     DataSnapshot dsDepth = ds.child("深度（公里）");
 
-                    String Time = (String)dsTime.getValue();
-                    String locale = (String)dsLocale.getValue();
-                    String extent = (String)dsExtent.getValue();
-                    String depth = (String)dsDepth.getValue();
+                    String Time = "Time : " + (String)dsTime.getValue();
+                    String locale = "locale : " + (String)dsLocale.getValue();
+                    String extent = "extent : " + (String)dsExtent.getValue();
+                    String depth = "depth : " + (String)dsDepth.getValue();
 
                     quake aQuake = new quake();
                     aQuake.setTime(Time);
