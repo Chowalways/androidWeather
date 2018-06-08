@@ -9,6 +9,7 @@ public class quake {
     private String extent;
     private String locale;
     private String depth;
+    private String time;
 
     public String getExtent() {
         return extent;
@@ -34,6 +35,13 @@ public class quake {
         this.depth = depth;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
 }
 
