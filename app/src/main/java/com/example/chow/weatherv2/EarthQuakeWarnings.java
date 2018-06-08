@@ -83,7 +83,6 @@ public class EarthQuakeWarnings extends AppCompatActivity {
         class FirebaseThread extends Thread {
 
             private DataSnapshot dataSnapshot;
-
             public FirebaseThread(DataSnapshot dataSnapshot) {
                 this.dataSnapshot = dataSnapshot;
             }
@@ -137,20 +136,6 @@ public class EarthQuakeWarnings extends AppCompatActivity {
             });
         }
 
-        private Bitmap getImgBitmap(String imgUrl) {
-            try {
-                URL url = new URL(imgUrl);
-                Bitmap bm = BitmapFactory.decodeStream(url.openConnection()
-                        .getInputStream());
-                return bm;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
         class quakeArrayAdapter extends ArrayAdapter<quake> {
             Context context;
 
@@ -164,15 +149,19 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(context);
                 LinearLayout itemlayout = null;
                 if (convertView == null) {
-                    itemlayout = (LinearLayout) inflater.inflate(R.layout.pet_item, null);
+                    itemlayout = (LinearLayout) inflater.inflate(R.layout.quake, null);
                 } else {
                     itemlayout = (LinearLayout) convertView;
                 }
                 quake item = (quake) getItem(position);
-                TextView tvShelter = (TextView) itemlayout.findViewById(R.id.tv_shelter);
-                tvShelter.setText(item.getShelter());
-                TextView tvKind = (TextView) itemlayout.findViewById(R.id.tv_kind);
-                tvKind.setText(item.getKind());
+                TextView tvDepth = (TextView) itemlayout.findViewById(R.id.tv_depth);
+                tvDepth.setText(item.getDepth());
+                TextView tvExtent = (TextView) itemlayout.findViewById(R.id.tv_extent);
+                tvExtent.setText(item.getExtent());
+                TextView tvLocale = (TextView) itemlayout.findViewById(R.id.tv_locale);
+                tvLocale.setText(item.getLocale());
+                TextView tvTime = (TextView) itemlayout.findViewById(R.id.tv_time);
+                tvTime.setText(item.getTime());
                 return itemlayout;
             }
         }
