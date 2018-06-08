@@ -12,4 +12,3 @@ public class Typhoon extends AppCompatActivity {
 
     }
 }
-//uninportnt

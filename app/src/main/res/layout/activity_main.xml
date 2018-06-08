@@ -32,13 +32,13 @@
                 android:clickable="true"
                 android:onClick="WeatherClass" />
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/typhoonbtn"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="135dp"-->
-                <!--android:layout_margin="10dp"-->
-                <!--android:clickable="true"-->
-                <!--android:onClick="TyphoonWarnings" />-->
+            <ImageButton
+                android:id="@+id/typhoonbtn"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="Typhoon" />
 
             <ImageButton
                 android:id="@+id/earthquakebtn"

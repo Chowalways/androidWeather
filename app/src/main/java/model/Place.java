@@ -66,4 +66,3 @@ public class Place {
         this.lastupdate = lastupdate;
     }
 }
-//uninportnt

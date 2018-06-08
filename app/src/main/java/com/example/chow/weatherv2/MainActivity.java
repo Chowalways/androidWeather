@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         weatherImage.setBackgroundResource(R.drawable.rain);
         weatherGif = (AnimationDrawable) weatherImage.getBackground();
 
-//        ImageButton typhoonImage = (ImageButton) findViewById(R.id.typhoonbtn);
-//        typhoonImage.setBackgroundResource(R.drawable.typhoon);
-//        typhoonGif = (AnimationDrawable) typhoonImage.getBackground();
+        ImageButton typhoonImage = (ImageButton) findViewById(R.id.typhoonbtn);
+        typhoonImage.setBackgroundResource(R.drawable.typhoon);
+        typhoonGif = (AnimationDrawable) typhoonImage.getBackground();
 
         ImageButton earthQuake = (ImageButton)findViewById(R.id.earthquakebtn);
         earthQuake.setBackgroundResource(R.drawable.earthquake);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         weatherGif.start();
-        //typhoonGif.start();
+        typhoonGif.start();
         earthquakeGif.start();
 
     }
@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    public  void TyphoonWarnings(View view){
-//        Intent intent = new Intent(this, TyphoonWarnings.class);
-//        startActivity(intent);
-//    }
+    public  void Typhoon(View view){
+        Intent intent = new Intent(this, Typhoon.class);
+        startActivity(intent);
+   }
     public void EarthQuakeWarnings(View view){
         Intent intent = new Intent(this, EarthQuakeWarnings.class);
         startActivity(intent);
@@ -65,6 +65,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         weatherGif.stop();
         earthquakeGif.stop();
+        typhoonGif.stop();
     }
 }
-//uninportnt

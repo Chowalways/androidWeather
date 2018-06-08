@@ -1,5 +1,6 @@
 package com.example.chow.weatherv2;
 
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +15,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,6 +64,7 @@ public class WeatherClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        removeTitleBar();
         setContentView(R.layout.weather_class);
         cityName = (TextView)findViewById(R.id.cityText);
         iconView = (ImageView)findViewById(R.id.thumbnailIcon);
@@ -71,7 +76,6 @@ public class WeatherClass extends AppCompatActivity {
         sunrise = (TextView) findViewById(R.id.riseText);
         sunset = (TextView)findViewById(R.id.sunsetText);
         updated = (TextView)findViewById(R.id.updateText);
-
 
         CityPreference cityPreference = new CityPreference(WeatherClass.this);
         renderWeatherData(cityPreference.getCity());
@@ -122,6 +126,15 @@ public class WeatherClass extends AppCompatActivity {
 
     }
 
+    protected void removeTitleBar() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+        //Remove notification bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
     private class WeatherTask extends AsyncTask<String, Void, Weather>{
 
         @Override
@@ -167,14 +180,14 @@ public class WeatherClass extends AppCompatActivity {
 
             cityName.setText(weather.place.getCity() + "," + weather.place.getCountry());
             temp.setTitleText("" + tempFormat + "°C");
-            humidity.setText("Humidity: " + weather.currentCondition.getHumidity() + "%");
-            pressure.setText("Pressure: " + weather.currentCondition.getPressure() + "hPa");
-            wind.setText("Wind: \n" + weather.wind.getSpeed() + "mps");
-            sunrise.setText("Sunrise: " + sunriseDate);
-            sunset.setText("Sunset: " + sunsetDate);
+            humidity.setText(/*"Humidity: " + */weather.currentCondition.getHumidity() + "%");
+            pressure.setText(/*"Pressure: " + */weather.currentCondition.getPressure() + "hPa");
+            wind.setText(/*"Wind: \n" + */weather.wind.getSpeed() + "mps");
+            sunrise.setText(/*"Sunrise: " + */sunriseDate);
+            sunset.setText(/*"Sunset: " + */sunsetDate);
             updated.setText("Last Updated: " + updateDate);
-            description.setText("Condition: " + weather.currentCondition.getCondition() + "(" +
-                    weather.currentCondition.getDescription() + ")");
+            description.setText(/*"Condition: " + weather.currentCondition.getCondition() + "(" +*/
+                    weather.currentCondition.getDescription() /*+ ")"*/);
 
         }
     }

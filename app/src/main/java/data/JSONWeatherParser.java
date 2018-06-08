@@ -42,7 +42,7 @@ public class JSONWeatherParser {
 
            //weather.currentCondition.setPressure(Utils.getInt("pressure", jsonWeahter));
            weather.currentCondition.setIcon(Utils.getString("icon", jsonWeahter));
-//uninportnt
+
            // main obj
            JSONObject mainObj = Utils.getObject("main", jsonObject);
            weather.currentCondition.setTemperature(Utils.getDouble("temp", mainObj));
