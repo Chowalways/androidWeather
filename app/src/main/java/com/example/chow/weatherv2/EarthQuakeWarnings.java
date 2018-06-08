@@ -97,24 +97,27 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                     DataSnapshot dsExtent = ds.child("規模");
                     DataSnapshot dsDepth = ds.child("深度（公里）");
 
-                    String shelterName = (String)dsSName.getValue();
-                    String kind = (String)dsAKind.getValue();
-
-                    DataSnapshot dsImg = ds.child("album_file");
-                    String imgUrl = (String) dsImg.getValue();
-                    Bitmap petImg = getImgBitmap(imgUrl);
+                    String Time = (String)dsTime.getValue();
+                    String locale = (String)dsLocale.getValue();
+                    String extent = (String)dsExtent.getValue();
+                    String depth = (String)dsDepth.getValue();
 
                     quake aQuake = new quake();
-                    aQuake.setShelter(shelterName);
-                    aQuake.setKind(kind);
-                    aQuake.setImgUrl(petImg);
+                    aQuake.setTime(Time);
+                    aQuake.setLocale(locale);
+                    aQuake.setExtent(extent);
+                    aQuake.setDepth(depth);
                     lsquake.add(aQuake);
-                    Log.v("AdoptPet", shelterName + ";" + kind);
+                    /*
+                                        Log.v("EarthQuake", Time + ";" + locale );
+                                         */
                 }
+                /*
                 Message msg = new Message();
                 msg.what = LIST_quake;
-                msg.obj = lsPets;
+                msg.obj = lsquake;
                 handler.sendMessage(msg);
+                */
             }
         }
 
@@ -170,8 +173,6 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                 tvShelter.setText(item.getShelter());
                 TextView tvKind = (TextView) itemlayout.findViewById(R.id.tv_kind);
                 tvKind.setText(item.getKind());
-                ImageView ivPet = (ImageView) itemlayout.findViewById(R.id.iv_pet);
-                ivPet.setImageBitmap(item.getImgUrl());
                 return itemlayout;
             }
         }
