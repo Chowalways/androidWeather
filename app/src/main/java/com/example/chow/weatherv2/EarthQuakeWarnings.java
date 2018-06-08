@@ -49,6 +49,7 @@ public class EarthQuakeWarnings extends AppCompatActivity {
         private static final int LIST_quake = 1;
 
         private Handler handler = new Handler() {
+
             @Override
             public void publish(LogRecord logRecord) {
 
@@ -64,7 +65,7 @@ public class EarthQuakeWarnings extends AppCompatActivity {
 
             }
 
-            public void handleMessage(Message msg) {
+            public void sendMessage(Message msg) {
                 switch (msg.what) {
                     case LIST_quake: {
                         List<quake> quakes = (List<quake>)msg.obj;
@@ -85,7 +86,7 @@ public class EarthQuakeWarnings extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_earthquake);
 
             ListView Quake= (ListView)findViewById(R.id.listview_earthQuake);
 
@@ -126,12 +127,14 @@ public class EarthQuakeWarnings extends AppCompatActivity {
                     Log.v("EarthQuake", Time + ";" + locale );
 
                 }
-                /*
+
+
+
                 Message msg = new Message();
                 msg.what = LIST_quake;
                 msg.obj = lsquake;
                 handler.sendMessage(msg);
-                */
+
             }
         }
 

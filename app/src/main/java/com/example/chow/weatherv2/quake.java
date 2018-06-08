@@ -5,7 +5,6 @@ package com.example.chow.weatherv2;
  */
 public class quake {
 
-    //private Bitmap imgUrl;
     private String extent;
     private String locale;
     private String depth;
