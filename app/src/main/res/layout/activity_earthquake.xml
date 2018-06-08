@@ -1,45 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/listview_pet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
-        <ImageView
-            android:id="@+id/iv_quake"
-            android:layout_width="200px"
-            android:layout_height="200px"
-            android:scaleType="fitXY"
-            android:layout_margin="20px"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_locale"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="60px"
-                android:layout_margin="15px" />
-
-            <TextView
-                android:id="@+id/tv_extent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10px" />
-
-            <TextView
-                android:id="@+id/tv_depth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10px" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

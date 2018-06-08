@@ -3,7 +3,7 @@ package com.example.chow.weatherv2;
 /**
  * Created by user on 2018/5/31.
  */
-public class earthQuakeList {
+public class quake {
 
     //private Bitmap imgUrl;
     private String extent;
