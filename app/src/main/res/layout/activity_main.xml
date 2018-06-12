@@ -38,7 +38,7 @@
                 android:layout_height="135dp"
                 android:layout_margin="10dp"
                 android:clickable="true"
-                android:onClick="Typhoon" />
+                android:onClick="TyphoonMap" />
 
             <ImageButton
                 android:id="@+id/earthquakebtn"

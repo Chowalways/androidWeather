@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eaf210"
+    android:background="#3399ff"
     tools:context=".WeatherClass">
 
     <RelativeLayout
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Hello"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:layout_height="100dp"
             android:layout_below="@id/cityText"
             android:layout_marginTop="10dp"
-            android:background="#eaf210" />
+            android:background="#3399ff" />
 
         <com.github.pavlospt.CircleView
             android:id="@+id/temperatureText"
@@ -39,18 +39,17 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            app:cv_backgroundColorValue="#eaf210"
-            app:cv_fillColor="#1b5de5"
-            app:cv_strokeColorValue="#0b15e0"
+            app:cv_backgroundColorValue="#ffffff"
+            app:cv_fillColor="#3399ff"
+            app:cv_strokeColorValue="#1b5de5"
             app:cv_subtitleText=""
-            app:cv_titleColor="#000000"
+            app:cv_titleColor="#ffffff"
             app:cv_titleSize="45dp"
             app:cv_titleText="temperature" />
 
 
         <LinearLayout
             android:id="@+id/contents"
-            android:background="#0b15e0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/temperatureText"
@@ -79,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="wind"
-                    android:textColor="#eaf210"
+                    android:textColor="#ffffff"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -106,7 +105,7 @@
                     android:layout_below="@+id/windText"
                     android:layout_marginTop="5dp"
                     android:text="cloud"
-                    android:textColor="#eaf210"
+                    android:textColor="#ffffff"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -133,7 +132,7 @@
                 android:layout_below="@+id/cloudText"
                 android:layout_marginTop="5dp"
                 android:text="pressure"
-                android:textColor="#eaf210"
+                android:textColor="#ffffff"
                 android:textSize="20dp" />
 
         </LinearLayout>
@@ -172,7 +171,7 @@
                     android:layout_below="@+id/pressureText"
                     android:layout_marginTop="5dp"
                     android:text="Humidity"
-                    android:textColor="#0b15e0"
+                    android:textColor="#ffffff"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -200,7 +199,7 @@
                     android:layout_below="@+id/riseText"
                     android:layout_marginTop="5dp"
                     android:text="Sunset"
-                    android:textColor="#0b15e0"
+                    android:textColor="#ffffff"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -229,7 +228,7 @@
                     android:layout_below="@+id/humidityText"
                     android:layout_marginTop="5dp"
                     android:text="Sunrise"
-                    android:textColor="#0b15e0"
+                    android:textColor="#ffffff"
                     android:textSize="20dp" />
 
             </LinearLayout>

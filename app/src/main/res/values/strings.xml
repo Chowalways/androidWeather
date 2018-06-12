@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WeatherV2</string>
     <string name="ChangeCity">Change city</string>
+    <string name="title_activity_typhoon_map">Map</string>
 </resources>

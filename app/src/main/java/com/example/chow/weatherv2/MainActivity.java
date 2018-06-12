@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public  void Typhoon(View view){
-        Intent intent = new Intent(this, Typhoon.class);
+    public  void TyphoonMap(View view){
+        Intent intent = new Intent(this, TyphoonMap.class);
         startActivity(intent);
    }
     public void EarthQuakeWarnings(View view){

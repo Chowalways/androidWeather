@@ -64,7 +64,7 @@ public class WeatherClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        removeTitleBar();
+        //removeTitleBar();
         setContentView(R.layout.weather_class);
         cityName = (TextView)findViewById(R.id.cityText);
         iconView = (ImageView)findViewById(R.id.thumbnailIcon);
@@ -126,14 +126,14 @@ public class WeatherClass extends AppCompatActivity {
 
     }
 
-    protected void removeTitleBar() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        if (getSupportActionBar() != null)
-            getSupportActionBar().hide();
-        //Remove notification bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
+//    protected void removeTitleBar() {
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+//        if (getSupportActionBar() != null)
+//            getSupportActionBar().hide();
+//        //Remove notification bar
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//    }
 
     private class WeatherTask extends AsyncTask<String, Void, Weather>{
 
