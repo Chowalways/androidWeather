@@ -1,4 +1,5 @@
 package com.example.chow.weatherv2;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class EarthQuakeWarnings extends AppCompatActivity {
 
         private static final int LIST_quake = 1;
 
+        @SuppressLint("HandlerLeak")
+        @SuppressWarnings("unchecked") //ignore error message
         private android.os.Handler handler = new android.os.Handler() {
             public void handleMessage(Message msg) {
                 switch (msg.what) {

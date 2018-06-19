@@ -2,4 +2,12 @@
     <string name="app_name">WeatherV2</string>
     <string name="ChangeCity">Change city</string>
     <string name="title_activity_typhoon_map">Map</string>
+    <string name="Language">Language</string>
+    <string name="temperature">°C</string>
+    <string name="mps">mps</string>
+    <string name="Last_Updated">Last Updated</string>
+    <string name="hpa">hpa</string>
+    <string name="english">English</string>
+    <string name="Submit">Submit</string>
+    <string name="Selection">Selection</string>
 </resources>

@@ -6,4 +6,10 @@
         android:title="@string/ChangeCity"
         android:orderInCategory="100"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/Language"
+        android:title="@string/Language"
+        app:showAsAction="never"/>
+
 </menu>
