@@ -253,7 +253,7 @@ public class WeatherClass extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.changeCity:
-
+                showInputDialog();
                 return true;
             case R.id.Language:
                 final CharSequence[] items = { "English", "中文"};
