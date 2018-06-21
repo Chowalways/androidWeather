@@ -7,7 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#82345781">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,18 +27,21 @@
                 android:id="@+id/tv_extent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="50px"
                 android:layout_margin="10px" />
 
             <TextView
                 android:id="@+id/tv_depth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="50px"
                 android:layout_margin="10px" />
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="50px"
                 android:layout_margin="10px" />
         </LinearLayout>
     </LinearLayout>

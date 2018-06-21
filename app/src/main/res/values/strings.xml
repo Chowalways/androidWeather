@@ -10,4 +10,9 @@
     <string name="english">English</string>
     <string name="Submit">Submit</string>
     <string name="Selection">Selection</string>
+    <string name="Time">Time</string>
+    <string name="Locale">Locale</string>
+    <string name="Extent">Extent</string>
+    <string name="Depth">Depth</string>
+    <string name="Home">Home</string>
 </resources>

@@ -124,6 +124,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).show();
                 return true;
+
+            case R.id.Home:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,MainActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
