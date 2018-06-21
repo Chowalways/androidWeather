@@ -8,8 +8,15 @@
         app:showAsAction="always"/>
 
     <item
+        android:id="@+id/Home"
+        android:title="@string/Home"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/Language"
         android:title="@string/Language"
         app:showAsAction="never"/>
+
+
 
 </menu>

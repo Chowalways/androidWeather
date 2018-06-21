@@ -233,10 +233,10 @@ public class WeatherClass extends AppCompatActivity {
 
         resources.updateConfiguration(config, dm);
 
-        Intent intent = new Intent(this, WeatherClass.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-       // this.recreate();
+        // this.recreate();
     }
 
     @Override
@@ -253,12 +253,12 @@ public class WeatherClass extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.changeCity:
-                showInputDialog();
+
                 return true;
             case R.id.Language:
                 final CharSequence[] items = { "English", "中文"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(WeatherClass.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.Selection));
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int position ) {
@@ -274,6 +274,13 @@ public class WeatherClass extends AppCompatActivity {
                     }
                 }).show();
                 return true;
+
+            case R.id.Home:
+                Intent intent = new Intent();
+                intent.setClass(this,MainActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

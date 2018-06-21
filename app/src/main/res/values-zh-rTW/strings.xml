@@ -11,4 +11,9 @@
     <string name="chinese">中文</string>
     <string name="Submit">提交</string>
     <string name="Selection">選擇</string>
+    <string name="Time">時間</string>
+    <string name="Locale">地點</string>
+    <string name="Extent">程度</string>
+    <string name="Depth">深度</string>
+    <string name="Home">首頁</string>
 </resources>
